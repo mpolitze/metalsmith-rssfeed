@@ -1,0 +1,35 @@
+{
+  "name": "metalsmith-rssfeed",
+  "version": "0.0.1",
+  "description": "A metalsmith plugin to create RSS feeds from files",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mpolitze/metalsmith-rss.git"
+  },
+  "keywords": [
+    "plugin",
+    "feed",
+    "rss",
+    "atom",
+    "metalsmith"
+  ],
+  "author": "mpolitze",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/mpolitze/metalsmith-rss/issues"
+  },
+  "homepage": "https://github.com/mpolitze/metalsmith-rss#readme",
+  "dependencies": {
+    "merge": "^1.2.0",
+    "minimatch": "^3.0.3",
+    "rss": "^1.2.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}
