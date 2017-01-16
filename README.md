@@ -1,5 +1,6 @@
 # metalsmith-rssfeed 
 [![Build Status](https://travis-ci.org/mpolitze/metalsmith-rssfeed.svg?branch=master)](https://travis-ci.org/mpolitze/metalsmith-rssfeed)
+[![npm version](https://badge.fury.io/js/metalsmith-rssfeed.svg)](https://badge.fury.io/js/metalsmith-rssfeed)
 
 Yet another [metalsmith](https://github.com/segmentio/metalsmith) plugin to generate an RSS feeds.
 
@@ -120,12 +121,12 @@ metalsmith.use(reefeed({
     // a custom function to return the feed items
     // defaults will be ignored if this is set.
     itemOptions:  (file, options) => ({
-            title: file.title || '',
-            description: (file.less || file.excerpt || file.contents || '').toString(),
-            author: file.author || '',
-            url: options.pathToUrl(file.path || ''),
-            date: file.date || '',
-            permalink: file[o.permalinkKey] ? options.pathToUrl(file[o.permalinkKey]) : null
+            title: file.title,
+            description: file.less || file.excerpt || file.contents,
+            author: file.author,
+            url: options.pathToUrl(file[options.permalinkKey] || file.path, options),
+            date: file.date,            
+            guid: file[options.permalinkKey] ? null : file.path
     })
 ```
 
