@@ -10,9 +10,9 @@ module.exports = {
             title: file.title || '',
             description: (file.less || file.excerpt || file.contents || '').toString(),
             author: file.author || '',
-            url: o.pathToUrl(file.path || ''),
-            date: file.date || '',
-            permalink: file[o.permalinkKey] ? o.pathToUrl(file[o.permalinkKey]) : null
+            url: file[o.permalinkKey] ? o.pathToUrl(file[o.permalinkKey], o) : o.pathToUrl(file.path || '', o),
+            date: file.date || '',            
+            guid: file[o.permalinkKey] ? null : file.path
     }),
 
     collectionToFeed: (c, cc, o) => ({
@@ -26,7 +26,7 @@ module.exports = {
 
     ensureFunc: o => typeof o == 'function' ? o : () => o,
 
-    ensureArray: o => [].concat(o),
+    ensureArray: o => o !== undefined ? [].concat(o) : [],
 };
 
 })();
