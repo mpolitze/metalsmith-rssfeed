@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-rssfeed",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A metalsmith plugin to create RSS feeds from files",
   "main": "index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mpolitze/metalsmith-rss.git"
+    "url": "git+https://github.com/mpolitze/metalsmith-rssfeed.git"
   },
   "keywords": [
     "plugin",
@@ -30,6 +30,9 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "chai-xml": "^0.3.1",
+    "mocha": "^3.2.0",
+    "xmldom": "^0.1.27",
+    "xpath": "0.0.23"
   }
 }
