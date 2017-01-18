@@ -91,7 +91,7 @@ metalsmith.use(reefeed({
     feedOptions: (CollectionName, collection, options) => ({
             generator: options.generator,
             site_url: options.siteUrl,
-            author: options.author,
+            author: options.author.name || options.author,
             description: options.description.replace(o.replaceToken, c),
             title: options.title.replace(o.replaceToken, c),
             feed_url: options.pathToUrl(feedName)
@@ -123,7 +123,7 @@ metalsmith.use(reefeed({
     itemOptions:  (file, options) => ({
             title: file.title,
             description: file.less || file.excerpt || file.contents,
-            author: file.author,
+            author: file.author.name || file.author,
             url: options.pathToUrl(file[options.permalinkKey] || file.path, options),
             date: file.date,            
             guid: file[options.permalinkKey] ? null : file.path

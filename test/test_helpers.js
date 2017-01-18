@@ -12,6 +12,43 @@ MetalsmithFake.prototype.metadata = function(){
 }
 
 describe('metalsmith-rssfeed helpers', function() {
+    describe('fileToItem', function() {
+        it('should extract author name from object', function(done){
+            var o = hlp.ensureOptions();
+
+            var tests = [
+                {file: {author:{name:'TheName', some:'other', properties:true}}, expect:'TheName'},
+                {file: {author:{some:'other', properties:true}}, expect:''},
+                {file: {author:'OnlyAName'}, expect:'OnlyAName'}
+            ];
+
+            for(var t of tests){
+                var result = hlp.fileToItem(t.file, o);            
+                expect(result.author).to.equal(t.expect);
+            }    
+            done();
+        });
+    });
+
+    describe('collectionToFeed', function() {
+        it('should extract author name from object', function(done){
+            var tests = [
+                {options: {author:{name:'TheName', some:'other', properties:true}}, expect:'TheName'},
+                {options: {author:{some:'other', properties:true}}, expect:''},
+                {options: {author:'OnlyAName'}, expect:'OnlyAName'}
+            ];
+
+            for(var t of tests){
+                var o = hlp.ensureOptions(t.options);
+                var result = hlp.collectionToFeed('', {}, o);            
+                expect(result.author).to.equal(t.expect);
+            }          
+            done();
+        });
+    });
+
+
+
     describe('ensurefunc', function() {
         it('should return a function', function(done){
             expect(hlp.ensureFunc()).to.be.a("function");

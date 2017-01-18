@@ -1,38 +1,13 @@
 module.exports = function(o){
     var RSS = require('rss');
-    var minimatch = require('minimatch');
-    var merge = require('merge')
     
-    var helpers = require('./helpers.js')
+    var helpers = require('./helpers.js');
 
     return function(files, metalsmith, done){
         var md = metalsmith.metadata();
         var siteMd = md.site || md;
 
-        o = o || {};
-
-        o.name          = o.name            || ':collection.xml';
-
-        o.author        = o.author          || siteMd.author        || '';
-        o.title         = o.title           || siteMd.title         || '';
-        o.description   = o.description     || siteMd.description   || '';
-        o.siteUrl       = o.siteUrl         || siteMd.siteUrl       || '';
-        o.generator 	= o.generator		|| 'metalsmith-rss';
-        
-        o.feedOptions	= helpers.ensureFunc(o.feedOptions || helpers.collectionToFeed);
-
-        o.collection    = o.collection ? helpers.ensureArray(o.collection) : false;
-        o.collectionKey = o.collectionKey   || o.collection ? 'collections' : false;		
-        o.replaceToken  = o.replaceToken 	|| ':collection';
-        o.pattern       = new minimatch.Minimatch(o.pattern || '**');
-
-        o.permalinkKey  = o.permalinkKey    || 'permalink';
-
-        o.limit         = o.limit           || false;
-
-        o.pathToUrl     = o.pathToUrl       || helpers.resolveUrl;
-        
-        o.itemOptions	= helpers.ensureFunc(o.itemOptions || helpers.fileToItem);
+        o = helpers.ensureOptions(o, siteMd);
 
         var collections = {};
         var feeds = {};
