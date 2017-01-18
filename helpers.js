@@ -48,7 +48,6 @@ helpers = {
     collectionToFeed: (c, cc, o) => ({
             generator: o.generator,
             site_url: o.siteUrl,
-            //author: o.author.name || o.author,
             author: (typeof o.author == 'object' ? o.author.name : o.author) || '',
             description: o.description.replace(o.replaceToken, c),
             title: o.title.replace(o.replaceToken, c),
