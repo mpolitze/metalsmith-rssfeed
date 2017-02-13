@@ -22,7 +22,7 @@ var rssfeed     = require('metalsmith-rssfeed');
 
 // create a rss feed from the first 20 elements of the collection posts
 // and save it as feed.xml
-metalsmith.use(reefeed({
+metalsmith.use(rssfeed({
     collection: "posts",
     limit: 20,
     name: "feed.xml",
@@ -33,7 +33,7 @@ metalsmith.use(reefeed({
 create a rss feed for containing every post with a specific tag and save it in one file per tag:
 
 ```javascript
-metalsmith.use(reefeed({
+metalsmith.use(rssfeed({
     collectionKey: "tags",
     name: ":collection.xml",
 });
@@ -42,7 +42,7 @@ metalsmith.use(reefeed({
 create a rss feed for containing every post with a specific tag and save it in one file per tag:
 
 ```javascript
-metalsmith.use(reefeed({
+metalsmith.use(rssfeed({
     collectionKey: "tags",
     name: ":collection.xml",
 });
@@ -51,7 +51,7 @@ metalsmith.use(reefeed({
 merge all tagged posts in a single feed alltags.xml:
 
 ```javascript
-metalsmith.use(reefeed({
+metalsmith.use(rssfeed({
     title: 'Tagged Posts'
     description: 'All tagged posts are in this feed.'
     collectionKey: "tags",
