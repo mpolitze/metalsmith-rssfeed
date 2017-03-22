@@ -40,9 +40,13 @@ module.exports = function(o){
             if(o.limit){
                 collection = collection.slice(0, o.limit);				
             }
-
+                    
             for(var i in collection){
                 var file = collection[i];
+                
+                if (isNaN(i) || file == null)
+                    continue;
+                    
                 if(!o.collection || file.collection == o.collection){
                     var item = o.itemOptions(file, o);
                     feed.item(item);
